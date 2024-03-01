@@ -1,6 +1,10 @@
 % Copyright (c) 2023 Qualcomm Technologies, Inc.
-% All Rights Reserved.
-load matlab_data/0000_0000.mat
+% All Rights Reserved.pwd
+
+P = csvread('matlab_data/P.csv');
+q = csvread('matlab_data/q.csv');
+r = csvread('matlab_data/r.csv');
+x0 = csvread('matlab_data/x0.csv');
 
 n_bits = 4;
 n=size(P,1);
