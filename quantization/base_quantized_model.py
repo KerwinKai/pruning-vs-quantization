@@ -109,13 +109,21 @@ class QuantizedModel(nn.Module):
 
     def set_quant_state(self, weight_quant, act_quant):
         if act_quant:
+            print('*'*100)
+            print('Debug: run quant act ')
             self.quantized_acts()
         else:
+            print('*'*100)
+            print('Debug: no quant act')
             self.full_precision_acts()
 
         if weight_quant:
+            print('*'*100)
+            print('Debug: run quant weight')
             self.quantized_weights()
         else:
+            print('*'*100)
+            print('Debug: no quant weight')
             self.full_precision_weights()
 
     def grad_scaling(self, grad_scaling=True):
