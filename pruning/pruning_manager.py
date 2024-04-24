@@ -226,9 +226,9 @@ class MovementPruner(PruningManager):
         if self.importance_score_mode == "learned":
             importance_score_tiled, shape = self.tiler(self.importance_score)
             assert shape == orig_shape
-            mask = TopKMaskStraightThrough.apply(importance_score_tiled.flatten(), sparsity_level)
+            mask = TopKMaskStraightThrough.forward(importance_score_tiled.flatten(), sparsity_level)
         else:
-            mask = TopKMaskStraightThrough.apply(torch.abs(x_tiled).flatten(), sparsity_level)
+            mask = TopKMaskStraightThrough.forward(torch.abs(x_tiled).flatten(), sparsity_level)
         weight_masked = self.tiler.inverse(mask, orig_shape) * x
 
         return weight_masked, bias
